@@ -526,6 +526,7 @@ const run = async (
   const table = await Table.findOne({ id: table_id });
   const fields = await table.getFields();
   const row_fld = fields.find((f) => f.name === row_field);
+  if(!row_fld) return "Row field not defined"
   const edit_switch_enabled = !!state._edit_switch_enabled;
   const edit_switch_allow_dragging = !(
     lock_editing_switch && !edit_switch_enabled
