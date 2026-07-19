@@ -347,6 +347,51 @@ const run = async (
   props: {
     tasks: rtasks,
     rows:rganttRows,
+    zoomLevels: [
+		{
+			headers: [{ unit: 'month', format: 'MMM YYYY' }],
+			minWidth: 800,
+			columnUnit: 'day',
+			columnOffset: 1
+		},
+		{
+			headers: [
+				{ unit: 'month', format: 'MMM YYYY' },
+				{ unit: 'week', format: '[week] w' },
+				{ unit: 'day', format: 'D' }
+			],
+			minWidth: 3200,
+			columnUnit: 'hour',
+			columnOffset: 4
+		},
+		{
+			headers: [
+				{ unit: 'day', format: 'MMM D, YYYY' },
+				{ unit: 'hour', format: 'HH' }
+			],
+			minWidth: 8000,
+			columnUnit: 'hour',
+			columnOffset: 2
+		},
+		{
+			headers: [
+				{ unit: 'day', format: 'MMM D, YYYY' },
+				{ unit: 'hour', format: 'HH' }
+			],
+			minWidth: 16000,
+			columnUnit: 'hour',
+			columnOffset: 2
+		},
+		{
+			headers: [
+				{ unit: 'day', format: 'MMM D, YYYY' },
+				{ unit: 'hour', format: 'HH' }
+			],
+			minWidth: 32000,
+			columnUnit: 'hour',
+			columnOffset: 2
+		}
+	],
     from: new Date(${JSON.stringify(first_start)}),
     to: new Date(${JSON.stringify(last_end)}),  
     dateAdapter: new MomentSvelteGanttDateAdapter(moment),    
