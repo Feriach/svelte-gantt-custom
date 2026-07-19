@@ -1479,20 +1479,20 @@ module.exports = {
             require("./package.json").version
           }/index.iife.js`
         : "/plugins/public/svelte-gantt/index.iife.js",
-      onlyViews: ["Gantt chart"],
+      onlyViews: ["Gantt chart1"],
     },
     {
       script: `/plugins/public/svelte-gantt@${
         require("./package.json").version
       }/moment.min.js`,
-      onlyViews: ["Gantt chart"],
+      onlyViews: ["Gantt chart1"],
     },
   ],
   sc_plugin_api_version: 1,
-  plugin_name: "svelte-gantt",
+  plugin_name: "svelte-gantt1",
   viewtemplates: [
     {
-      name: "Gantt chart",
+      name: "Gantt chart1",
       display_state_form: false,
       get_state_fields,
       configuration_workflow,
