@@ -1252,38 +1252,7 @@ const run = async (
       rowHeight: ${row_height || 52},
       rowPadding: ${row_padding || 6},
       fitWidth: true,
-      ${
-        timeRanges.length > 0
-          ? `timeRanges: [${timeRanges
-              .map(
-                (tr) => `{
-            id:${tr.id},
-            classes: ${JSON.stringify(tr.classes || null)},
-            label: ${JSON.stringify(tr.label || null)},
-            from: moment("${tr.from.toISOString()}"),
-            to: moment("${tr.to.toISOString()}"),
-          }`
-              )
-              .join(",")}],`
-          : ""
-      }
-      reflectOnParentRows: ${!!reflectOnParentRows},
-      ${
-        task_detail_view
-          ? `onTaskButtonClick: (task) => { ajax_modal('/view/${task_detail_view}?id='+task.id) },`
-          : ""
-      }
-      tableHeaders: [{ title: '${
-        row_fld.label
-      }', property: 'label', width: 140, type: 'tree' }],
-      tableWidth: ${table_width || 240},
-      ganttTableModules: [SvelteGanttTable],
-      dependencies: ${JSON.stringify(dependencies)},
-      ganttBodyModules : [SvelteGanttDependencies],
-      ...${JSON.stringify(spanProps)},
-    }});
-    gantt.$set({
-    zoomLevels: [
+	  ${zoomLevels: [
 		{
 			headers: [{ unit: 'month', format: 'MMM YYYY' }],
 			minWidth: 800,
@@ -1327,8 +1296,37 @@ const run = async (
 			columnUnit: 'hour',
 			columnOffset: 2
 		}
-	]
-});
+	  ]},
+      ${
+        timeRanges.length > 0
+          ? `timeRanges: [${timeRanges
+              .map(
+                (tr) => `{
+            id:${tr.id},
+            classes: ${JSON.stringify(tr.classes || null)},
+            label: ${JSON.stringify(tr.label || null)},
+            from: moment("${tr.from.toISOString()}"),
+            to: moment("${tr.to.toISOString()}"),
+          }`
+              )
+              .join(",")}],`
+          : ""
+      }
+      reflectOnParentRows: ${!!reflectOnParentRows},
+      ${
+        task_detail_view
+          ? `onTaskButtonClick: (task) => { ajax_modal('/view/${task_detail_view}?id='+task.id) },`
+          : ""
+      }
+      tableHeaders: [{ title: '${
+        row_fld.label
+      }', property: 'label', width: 140, type: 'tree' }],
+      tableWidth: ${table_width || 240},
+      ganttTableModules: [SvelteGanttTable],
+      dependencies: ${JSON.stringify(dependencies)},
+      ganttBodyModules : [SvelteGanttDependencies],
+      ...${JSON.stringify(spanProps)},
+    }});
     gantt.api.tasks.on.changed((tasks) => {     
       const from = tasks[0].task.model.from
       const to = tasks[0].task.model.to
