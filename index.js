@@ -1246,8 +1246,6 @@ const run = async (
     props: {
       tasks,
       rows:ganttRows,
-      from: new Date(${JSON.stringify(first_start)}),
-      to: new Date(${JSON.stringify(last_end)}),  
       dateAdapter: new MomentSvelteGanttDateAdapter(moment),    
       rowHeight: ${row_height || 52},
       rowPadding: ${row_padding || 6},
