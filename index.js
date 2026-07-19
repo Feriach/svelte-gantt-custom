@@ -1282,6 +1282,53 @@ const run = async (
       ganttBodyModules : [SvelteGanttDependencies],
       ...${JSON.stringify(spanProps)},
     }});
+    gantt.$set({
+    zoomLevels: [
+		{
+			headers: [{ unit: 'month', format: 'MMM YYYY' }],
+			minWidth: 800,
+			columnUnit: 'day',
+			columnOffset: 1
+		},
+		{
+			headers: [
+				{ unit: 'month', format: 'MMM YYYY' },
+				{ unit: 'week', format: '[week] w' },
+				{ unit: 'day', format: 'D' }
+			],
+			minWidth: 3200,
+			columnUnit: 'hour',
+			columnOffset: 4
+		},
+		{
+			headers: [
+				{ unit: 'day', format: 'MMM D, YYYY' },
+				{ unit: 'hour', format: 'HH' }
+			],
+			minWidth: 8000,
+			columnUnit: 'hour',
+			columnOffset: 2
+		},
+		{
+			headers: [
+				{ unit: 'day', format: 'MMM D, YYYY' },
+				{ unit: 'hour', format: 'HH' }
+			],
+			minWidth: 16000,
+			columnUnit: 'hour',
+			columnOffset: 2
+		},
+		{
+			headers: [
+				{ unit: 'day', format: 'MMM D, YYYY' },
+				{ unit: 'hour', format: 'HH' }
+			],
+			minWidth: 32000,
+			columnUnit: 'hour',
+			columnOffset: 2
+		}
+	]
+});
     gantt.api.tasks.on.changed((tasks) => {     
       const from = tasks[0].task.model.from
       const to = tasks[0].task.model.to
