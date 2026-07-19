@@ -1252,7 +1252,7 @@ const run = async (
       rowHeight: ${row_height || 52},
       rowPadding: ${row_padding || 6},
       fitWidth: true,
-	  ${zoomLevels: [
+	  zoomLevels: [
 		{
 			headers: [{ unit: 'month', format: 'MMM YYYY' }],
 			minWidth: 800,
@@ -1296,7 +1296,7 @@ const run = async (
 			columnUnit: 'hour',
 			columnOffset: 2
 		}
-	  ]},
+	  ],
       ${
         timeRanges.length > 0
           ? `timeRanges: [${timeRanges
