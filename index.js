@@ -1250,6 +1250,8 @@ const run = async (
       rowHeight: ${row_height || 52},
       rowPadding: ${row_padding || 6},
       fitWidth: true,
+	  from: new Date(${JSON.stringify(first_start)}),
+      to: new Date(${JSON.stringify(last_end)}),  
 	  zoomLevels: [
 		{
 			headers: [{ unit: 'month', format: 'MMM YYYY' }],
