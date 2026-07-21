@@ -1246,57 +1246,12 @@ const run = async (
     props: {
       tasks,
       rows:ganttRows,
+      from: new Date(${JSON.stringify(first_start)}),
+      to: new Date(${JSON.stringify(last_end)}),  
       dateAdapter: new MomentSvelteGanttDateAdapter(moment),    
       rowHeight: ${row_height || 52},
       rowPadding: ${row_padding || 6},
       fitWidth: true,
-	  from: new Date(${JSON.stringify(first_start)}),
-      to: new Date(${JSON.stringify(last_end)}),  
-	  zoomLevels: [
-		{
-			headers: [{ unit: 'month', format: 'MMM YYYY' }],
-			minWidth: 800,
-			columnUnit: 'day',
-			columnOffset: 1
-		},
-		{
-			headers: [
-				{ unit: 'month', format: 'MMM YYYY' },
-				{ unit: 'week', format: '[week] w' },
-				{ unit: 'day', format: 'D' }
-			],
-			minWidth: 3200,
-			columnUnit: 'hour',
-			columnOffset: 4
-		},
-		{
-			headers: [
-				{ unit: 'day', format: 'MMM D, YYYY' },
-				{ unit: 'hour', format: 'HH' }
-			],
-			minWidth: 8000,
-			columnUnit: 'hour',
-			columnOffset: 2
-		},
-		{
-			headers: [
-				{ unit: 'day', format: 'MMM D, YYYY' },
-				{ unit: 'hour', format: 'HH' }
-			],
-			minWidth: 16000,
-			columnUnit: 'hour',
-			columnOffset: 2
-		},
-		{
-			headers: [
-				{ unit: 'day', format: 'MMM D, YYYY' },
-				{ unit: 'hour', format: 'HH' }
-			],
-			minWidth: 32000,
-			columnUnit: 'hour',
-			columnOffset: 2
-		}
-	  ],
       ${
         timeRanges.length > 0
           ? `timeRanges: [${timeRanges
@@ -1477,7 +1432,7 @@ module.exports = {
             require("./package.json").version
           }/index.iife.js`
         : "/plugins/public/svelte-gantt/index.iife.js",
-      onlyViews: ["Gantt chart1"],
+      onlyViews: ["Gantt chart"],
     },
     {
       script: `/plugins/public/svelte-gantt@${
@@ -1487,7 +1442,7 @@ module.exports = {
     },
   ],
   sc_plugin_api_version: 1,
-  plugin_name: "svelte-gantt1",
+  plugin_name: "svelte-gantt",
   viewtemplates: [
     {
       name: "Gantt chart1",
